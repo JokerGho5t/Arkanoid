@@ -4,8 +4,14 @@ using JokerGho5t.MessageSystem;
 
 public class Ball : MonoBehaviour
 {
+    #region Private Variables
+
     private BallComponent data;
     private Rigidbody2D rb;
+
+    #endregion
+
+    #region Public Function
 
     public void Init(BallComponent data)
     {
@@ -14,7 +20,38 @@ public class Ball : MonoBehaviour
         Restart();
 
         Message.AddListener("RestartLevel", Restart);
+        Message.AddListener("StartLevel", StartLevel);
     }
+
+    #endregion
+
+    #region Private Function
+
+    private float hitFactor(Vector2 ballPos, Vector2 paddlePos, float paddleWidth)
+    {
+        //              Ball
+        //               ||
+        //               \/
+        // x:  -1..-0.5..0..0.5..1
+        //       ---------------         <------- paddle
+
+        return (ballPos.x - paddlePos.x) / paddleWidth;
+    }
+
+    private void StartLevel()
+    {
+        rb.velocity = Vector2.up * data.SpeedBall;
+    }
+
+    private void Restart()
+    {
+        transform.position = Vector3.zero;
+        rb.velocity = Vector2.zero;
+    }
+
+    #endregion
+
+    #region Physic Event
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,20 +67,5 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private float hitFactor(Vector2 ballPos, Vector2 paddlePos, float paddleWidth)
-    {
-        //              Ball
-        //               ||
-        //               \/
-        // x:  -1..-0.5..0..0.5..1
-        //       ---------------         <------- paddle
-
-        return (ballPos.x - paddlePos.x) / paddleWidth;
-    }
-
-    private void Restart()
-    {
-        transform.position = Vector3.zero;
-        rb.velocity = Vector2.up * data.SpeedBall;
-    }
+    #endregion
 }

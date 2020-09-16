@@ -5,9 +5,15 @@ using JokerGho5t.ScriptableObjects;
 
 public class Blocks : MonoBehaviour
 {
+    #region Private Variables
+
+    private float width = 13;
     private LevelData level;
     private Bounds field;
-    
+
+    #endregion
+
+    #region Public Function
 
     public void Init(LevelData level, Bounds field)
     {
@@ -20,6 +26,10 @@ public class Blocks : MonoBehaviour
         CreateLevel();
     }
 
+    #endregion
+
+    #region Private Function
+
     private void CreateLevel()
     {
         //-------------------------------------------
@@ -27,7 +37,7 @@ public class Blocks : MonoBehaviour
 
         PoolManager.logStatus = false;
         PoolManager.SetRoot(transform);
-        PoolManager.WarmPool(level.PrefabBlock, level.SizeField.x * level.SizeField.y);
+        PoolManager.WarmPool(level.PrefabBlock, level.CountLine * level.CountLine);
 
         var sizeBrick = level.PrefabBlock.GetComponent<Renderer>().bounds.size;
 
@@ -37,9 +47,9 @@ public class Blocks : MonoBehaviour
         Vector2 curPosition = new Vector2(field.min.x + (shagX / 2), field.max.y - level.SpacingOnUp);
 
         //-------------------------------------------
-        for (int y = 0; y < level.SizeField.y; y++)
+        for (int y = 0; y < level.CountLine; y++)
         {
-            for (int x = 0; x < level.SizeField.x; x++)
+            for (int x = 0; x < width; x++)
             {
                 var brick = PoolManager.SpawnObject(level.PrefabBlock).GetComponent<Brick>();
                 
@@ -66,9 +76,11 @@ public class Blocks : MonoBehaviour
 
     private void RemoveBrick()
     {
-        if(PoolManager.GetCountObjectInPool(level.PrefabBlock) == level.SizeField.x * level.SizeField.y)
+        if(PoolManager.GetCountObjectInPool(level.PrefabBlock) == level.CountLine * width)
         {
-            Message.Send("RestartLevel");
+            Message.Send("WinLevel");
         }
     }
+
+    #endregion
 }

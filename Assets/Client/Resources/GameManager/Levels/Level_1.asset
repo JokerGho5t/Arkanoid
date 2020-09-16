@@ -21,18 +21,18 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _sizeField: {x: 13, y: 5}
+  _countLine: 5
   _spacingOnUp: 20
   _prefabBlock: {fileID: 9089271113613512949, guid: c05e8fb97ce34ef46a34233f1f2b8504,
     type: 3}
   _blockdata:
-  - life: 5
+  - life: 1
     sprite: {fileID: 21300000, guid: 63093402e6e303640a5527fadcbd7b51, type: 3}
-  - life: 4
-    sprite: {fileID: 21300000, guid: 1b03f6c6f6b60ac4b8f79736d51d4a80, type: 3}
-  - life: 3
-    sprite: {fileID: 21300000, guid: 1a57f08aad2121f4cb119323511a0af6, type: 3}
-  - life: 2
-    sprite: {fileID: 21300000, guid: 8b24404cce61c3f48b3f82cf89a21b8c, type: 3}
   - life: 1
     sprite: {fileID: 21300000, guid: 141b3eb0d16825b4da6e252306beb401, type: 3}
+  - life: 1
+    sprite: {fileID: 21300000, guid: 1a57f08aad2121f4cb119323511a0af6, type: 3}
+  - life: 1
+    sprite: {fileID: 21300000, guid: 8b24404cce61c3f48b3f82cf89a21b8c, type: 3}
+  - life: 1
+    sprite: {fileID: 21300000, guid: 1b03f6c6f6b60ac4b8f79736d51d4a80, type: 3}

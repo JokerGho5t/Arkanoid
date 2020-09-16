@@ -1,18 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 
 using Sirenix.OdinInspector;
 
+
+[System.Serializable]
+public struct BlockComponent
+{
+    public BlockComponent(Sprite sprite, int life)
+    {
+        this.sprite = sprite;
+
+        this.life = (life < 1) ? 1 : life;
+    }
+
+    [Min(1)]
+    public int life;
+    public Sprite sprite;
+}
+
 namespace JokerGho5t.ScriptableObjects
 {
     public class LevelData : SerializedScriptableObject
     {
-        public Vector2Int SizeField => _sizeField;
-        [SerializeField]
+        public int CountLine => _countLine;
+        [SerializeField, Min(1)]
         [OnValueChanged("ChangeField")]
-        private Vector2Int _sizeField = new Vector2Int(1, 1);
+        private int _countLine = 1;
 
         public float SpacingOnUp => _spacingOnUp;
         [SerializeField]
@@ -31,14 +46,9 @@ namespace JokerGho5t.ScriptableObjects
 
         private void ChangeField()
         {
-            if (_sizeField.x < 1)
-                _sizeField.x = 1;
-            if (_sizeField.y < 1)
-                _sizeField.y = 1;
-
             _blockdata.Clear();
 
-            for (int i = 0; i < _sizeField.y; i++)
+            for (int i = 0; i < _countLine; i++)
             {
                 _blockdata.Add(new BlockComponent(null, 1));
             }

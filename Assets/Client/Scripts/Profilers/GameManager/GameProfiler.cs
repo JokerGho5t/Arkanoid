@@ -1,10 +1,20 @@
-﻿using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 using Sirenix.OdinInspector;
 
 using JokerGho5t.ScriptableObjects;
+
+[System.Serializable]
+public struct BallComponent
+{
+    public float SpeedBall;
+}
+
+[System.Serializable]
+public struct PaddleComponent
+{
+    public float SpeedPaddle;
+}
 
 public class GameProfiler : SerializedScriptableObject
 {
@@ -38,31 +48,4 @@ public class GameProfiler : SerializedScriptableObject
     [SerializeField, Required, HideLabel]
     [InlineEditor]
     private LevelData _targetLevel = null;
-}
-
-[System.Serializable]
-public struct BallComponent
-{
-    public float SpeedBall;
-}
-
-[System.Serializable]
-public struct PaddleComponent
-{
-    public float SpeedPaddle;
-}
-
-[System.Serializable]
-public struct BlockComponent
-{
-    public BlockComponent(Sprite sprite, int life)
-    {
-        this.sprite = sprite;
-
-        this.life = (life < 1) ? 1 : life;
-    }
-
-    [Min(1)]
-    public int life;
-    public Sprite sprite;
 }

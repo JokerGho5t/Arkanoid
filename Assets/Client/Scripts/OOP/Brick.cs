@@ -5,10 +5,16 @@ using JokerGho5t.MessageSystem;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Brick : MonoBehaviour
 {
+    #region Private Variables
+
     BlockComponent data;
     SpriteRenderer sprite;
 
     int curHP;
+
+    #endregion
+
+    #region Public Function
 
     public void Init(BlockComponent data)
     {
@@ -23,10 +29,28 @@ public class Brick : MonoBehaviour
         Message.AddListener("RestartLevel", Restart);
     }
 
+    public void Hit()
+    {
+        curHP--;
+
+        if (curHP == 0)
+        {
+            PoolManager.ReleaseObject(gameObject);
+        }
+    }
+
+    #endregion
+
+    #region Private Function
+
     private void Restart()
     {
         curHP = data.life;
     }
+
+    #endregion
+
+    #region Physic Event
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,13 +62,6 @@ public class Brick : MonoBehaviour
         Message.Send("RemoveBrick");
     }
 
-    public void Hit()
-    {
-        curHP--;
+    #endregion
 
-        if (curHP == 0)
-        {
-            PoolManager.ReleaseObject(gameObject);
-        }
-    }
 }

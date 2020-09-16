@@ -11,17 +11,32 @@ public class ControlSystem : MonoBehaviour
     public bool CheckFocus = true;
 #endif
 
+    #region Private Variables
+
     private bool isPause = false;
+    private bool isStart = false;
+    private bool isWin = false;
+
+    #endregion
+
+    #region Unity Function
 
     private void Start()
     {
         Message.AddListener("CloseGame", CloseGame);
         Message.AddListener("PauseGame", PauseGame);
+        Message.AddListener("WinLevel", Win);
     }
 
-    void Update()
+    private void Update()
     {
         Message.Send("OnUpdate");
+
+        if (isWin && Input.GetKeyDown(KeyCode.Space))
+            Message.Send("RestartLevel");
+
+        if (!isStart && Input.GetKeyDown(KeyCode.Space))
+            Message.Send("StartLevel");
     }
 
     private void FixedUpdate()
@@ -32,6 +47,26 @@ public class ControlSystem : MonoBehaviour
     private void OnDestroy()
     {
         Message.RemoveAllListener();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+#if UNITY_EDITOR
+        if (!CheckFocus)
+            return;
+#endif
+
+        if (!isPause)
+            Time.timeScale = (!focus) ? 0 : 1;
+    }
+
+    #endregion
+
+    #region Private Function
+
+    private void Win()
+    {
+        isWin = true;
     }
 
     private void PauseGame()
@@ -50,14 +85,5 @@ public class ControlSystem : MonoBehaviour
 #endif
     }
 
-    private void OnApplicationFocus(bool focus)
-    {
-#if UNITY_EDITOR
-        if (!CheckFocus)
-            return;
-#endif
-
-        if (!isPause)
-            Time.timeScale = (!focus)? 0 : 1;
-    }
+    #endregion
 }

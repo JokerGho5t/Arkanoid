@@ -7,10 +7,20 @@ using LeopotamGroup.Globals;
 
 public class LevelBuilder : MonoBehaviour
 {
+    #region Public Variables
+
     public GameProfiler Profiler;
     public Renderer BackgroundRender = null;
 
+    #endregion
+
+    #region Private Variables
+
     private Camera mainCamera = null;
+
+    #endregion
+
+    #region Unity Function
 
     private void Start()
     {
@@ -22,6 +32,10 @@ public class LevelBuilder : MonoBehaviour
 
         CreateBall();
     }
+
+    #endregion
+
+    #region Private Function
 
     private void CreateBlocks()
     {
@@ -64,4 +78,5 @@ public class LevelBuilder : MonoBehaviour
         ball.Init(Profiler.BallData);
     }
 
+    #endregion
 }
