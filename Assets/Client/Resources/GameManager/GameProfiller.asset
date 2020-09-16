@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f700f12a7d9b9f842a71b8605a0ea84f, type: 3}
+  m_Name: GameProfiller
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _prefabPaddle: {fileID: 3108572701871372728, guid: 39c604215d0276a4cb01c00e09dab2c5,
+    type: 3}
+  _heightPaddle: 30
+  _paddleData:
+    SpeedPaddle: 150
+  _prefabBall: {fileID: 7762892926948979569, guid: e64052cd31210c242a8fc55b56ea4855,
+    type: 3}
+  _ballData:
+    SpeedBall: 100
+  _targetLevel: {fileID: 11400000, guid: e1b822d9486704b469c4d71e181a68c2, type: 2}
