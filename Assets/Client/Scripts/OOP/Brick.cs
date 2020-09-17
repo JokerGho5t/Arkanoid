@@ -35,6 +35,11 @@ public class Brick : MonoBehaviour
 
         if (curHP == 0)
         {
+            if (data.LeaveAfterDestroy != null)
+            {
+                PoolManager.SpawnObject(data.LeaveAfterDestroy, transform.position);
+            }
+
             PoolManager.ReleaseObject(gameObject);
         }
     }

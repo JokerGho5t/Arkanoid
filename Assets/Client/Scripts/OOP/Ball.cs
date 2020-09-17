@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
     {
         this.data = data;
         rb = GetComponent<Rigidbody2D>();
+
         Restart();
 
         Message.AddListener("RestartLevel", Restart);

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3108572701871372734}
   - component: {fileID: 3108572701871372735}
   - component: {fileID: 4689255305090149161}
-  - component: {fileID: 3108572701871372733}
   - component: {fileID: 3108572701871372732}
+  - component: {fileID: 2524044612452251544}
   m_Layer: 0
   m_Name: racket
   m_TagString: Paddle
@@ -96,32 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd9f2fad507334ebe6b2c22a229f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &3108572701871372733
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108572701871372728}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 33, y: 10}
-    newSize: {x: 33, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 33, y: 10}
-  m_EdgeRadius: 0
 --- !u!50 &3108572701871372732
 Rigidbody2D:
   serializedVersion: 4
@@ -143,3 +117,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 6
+--- !u!60 &2524044612452251544
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108572701871372728}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 33, y: 10}
+    newSize: {x: 33, y: 10}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -13.325273, y: 4.852745}
+      - {x: -16.392673, y: 1.0490799}
+      - {x: 15.509159, y: 1.0490875}
+      - {x: 12, y: 5}

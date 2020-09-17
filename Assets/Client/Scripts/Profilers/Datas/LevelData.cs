@@ -8,16 +8,18 @@ using Sirenix.OdinInspector;
 [System.Serializable]
 public struct BlockComponent
 {
-    public BlockComponent(Sprite sprite, int life)
+    public BlockComponent(Sprite sprite, int life, GameObject LeaveAfterDestroy)
     {
         this.sprite = sprite;
-
         this.life = (life < 1) ? 1 : life;
+        this.LeaveAfterDestroy = LeaveAfterDestroy;
     }
 
     [Min(1)]
     public int life;
     public Sprite sprite;
+    [AssetsOnly]
+    public GameObject LeaveAfterDestroy;
 }
 
 namespace JokerGho5t.ScriptableObjects
@@ -50,7 +52,7 @@ namespace JokerGho5t.ScriptableObjects
 
             for (int i = 0; i < _countLine; i++)
             {
-                _blockdata.Add(new BlockComponent(null, 1));
+                _blockdata.Add(new BlockComponent(null, 1, null));
             }
         }
     }
